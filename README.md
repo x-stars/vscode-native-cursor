@@ -25,4 +25,4 @@ Visual Studio Code 的界面采用 [Electron](https://www.electronjs.org/) 技�
 
 目前此项目仅对 Windows 平台的 1.56 版本进行过测试。
 
-PowerShell 脚本也能用于 MacOS 和 Linux 平台（需要另行[安装 PowerShell](https://github.com/PowerShell/PowerShell/releases)），但脚本效果目前并未测试确认。
+PowerShell 脚本也能用于 macOS 和 Linux 平台（需要另行[安装 PowerShell](https://github.com/PowerShell/PowerShell/releases)），但脚本效果目前并未测试确认。
