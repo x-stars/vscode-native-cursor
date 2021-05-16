@@ -29,7 +29,7 @@ function Restore-VSCodeSource([string]$Path)
 }
 
 # 初始化 Visual Studio Code 相关路径。
-$CodeBinPath = $(Split-Path $(Get-Command code).Source -Parent)
+$CodeBinPath = Split-Path $(Get-Command code).Source -Parent
 $VSCodeHome = $(Get-Item $(Join-Path $CodeBinPath ..)).FullName
 $VSAppResDir = Combine-Path resources app out vs
 $SandBoxResDir = Combine-Path code electron-sandbox

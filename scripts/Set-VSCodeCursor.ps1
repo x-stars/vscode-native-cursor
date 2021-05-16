@@ -30,7 +30,7 @@ function Update-VSCodeSource([string]$Path, [string]$Content)
 }
 
 # 初始化 Visual Studio Code 相关路径。
-$CodeBinPath = $(Split-Path $(Get-Command code).Source -Parent)
+$CodeBinPath = Split-Path $(Get-Command code).Source -Parent
 $VSCodeHome = $(Get-Item $(Join-Path $CodeBinPath ..)).FullName
 $VSAppResDir = Combine-Path resources app out vs
 $SandBoxResDir = Combine-Path code electron-sandbox
@@ -47,6 +47,8 @@ $MainCssText = $MainCssText.Replace('cursor:pointer', 'cursor:default').
             '.action-menu-item{height:1.8em;cursor:default}').
     Replace('.detected-link-active{cursor:default}',
             '.detected-link-active{cursor:pointer}').
+    Replace('.xterm.xterm-cursor-pointer{cursor:default!important}',
+            '.xterm.xterm-cursor-pointer{cursor:pointer!important}').
     Replace('.button-link:hover{background:transparent}',
             '.button-link:hover{background:transparent;cursor:pointer}').
     Replace('.codelens-decoration>a:hover{cursor:default}',
@@ -64,7 +66,7 @@ $MainJsPath = Combine-Path $VSCodeHome $VSAppResDir $MainJsName
 $MainJsText = [System.IO.File]::ReadAllText($MainJsPath)
 $MainJsText = $MainJsText.
     Replace(".action-menu-item {`n`tflex: 1 1 auto;",
-            ".action-menu-item {`n`tcursor:default;`n`tflex: 1 1 auto;")
+            ".action-menu-item {`n`tcursor: default;`n`tflex: 1 1 auto;")
 Update-VSCodeSource $MainJsPath $MainJsText
 
 # 初始化报告问题窗口的 CSS 文件的路径。
