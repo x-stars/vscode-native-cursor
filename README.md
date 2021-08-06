@@ -12,7 +12,7 @@ Visual Studio Code 的界面采用 [Electron](https://www.electronjs.org/) 技�
 
 本项目仅包含两个 PowerShell 脚本文件，分别用于指针样式的修改和还原：
 
-* [`Set-VSCodeCursor.ps1`](scripts/Set-VSCodeCursor.ps1) 设置原生指针样式
+* [`Set-VSCodeNativeCursor.ps1`](scripts/Set-VSCodeNativeCursor.ps1) 设置原生指针样式
 * [`Reset-VSCodeCursor.ps1`](scripts/Reset-VSCodeCursor.ps1) 还原原始指针样式
 
 **注意**：如果 Visual Studio Code 安装在系统目录下（如 Windows 的 `Program Files` 目录等），则需要管理员权限运行。
