@@ -1,7 +1,5 @@
-﻿<#
-.SYNOPSIS
-设置 Visual Studio Code 的指针样式，使其符合原生应用的样式。
-#>
+﻿#.SYNOPSIS
+# 设置 Visual Studio Code 的指针样式，使其符合原生应用的样式。
 
 [CmdletBinding()]
 [OutputType([void])]

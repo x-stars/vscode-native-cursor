@@ -1,7 +1,5 @@
-﻿<#
-.SYNOPSIS
-恢复 Visual Studio Code 的原始指针样式，保持资源文件的完整性。
-#>
+﻿#.SYNOPSIS
+# 恢复 Visual Studio Code 的原始指针样式，保持资源文件的完整性。
 
 [CmdletBinding()]
 [OutputType([void])]
