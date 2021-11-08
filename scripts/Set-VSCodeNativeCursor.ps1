@@ -64,7 +64,9 @@ $MainJsPath = Combine-Path $VSCodeHome $VSAppResDir $MainJsName
 $MainJsText = [System.IO.File]::ReadAllText($MainJsPath)
 $MainJsText = $MainJsText.
     Replace(".action-menu-item {`n`tflex: 1 1 auto;",
-            ".action-menu-item {`n`tcursor: default;`n`tflex: 1 1 auto;")
+            ".action-menu-item {`n`tcursor: default;`n`tflex: 1 1 auto;").
+    Replace(".dirty-diff-glyph {`n`t`t`t`t`tcursor: pointer;",
+            ".dirty-diff-glyph {`n`t`t`t`t`tcursor: default;")
 Update-VSCodeSource $MainJsPath $MainJsText
 
 # 初始化报告问题窗口的 CSS 文件的路径。
