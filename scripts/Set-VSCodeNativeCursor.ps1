@@ -45,6 +45,8 @@ $MainCssText = $MainCssText.Replace('cursor:pointer', 'cursor:default').
             '.action-menu-item{height:1.8em;cursor:default}').
     Replace('.detected-link-active{cursor:default}',
             '.detected-link-active{cursor:pointer}').
+    Replace('.monaco-hover a:hover{cursor:default}',
+            '.monaco-hover a:hover{cursor:pointer}').
     Replace('.xterm.xterm-cursor-pointer{cursor:default!important}',
             '.xterm.xterm-cursor-pointer{cursor:pointer!important}').
     Replace('.button-link:hover{background:transparent}',
