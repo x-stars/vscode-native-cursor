@@ -53,8 +53,8 @@ $MainCssText = $MainCssText.Replace('cursor:pointer', 'cursor:default').
             '.button-link:hover{background:transparent;cursor:pointer}').
     Replace('.codelens-decoration>a:hover{cursor:default}',
             '.codelens-decoration>a:hover{cursor:pointer}').
-    Replace('.goto-definition-link{text-decoration:underline;cursor:default}',
-            '.goto-definition-link{text-decoration:underline;cursor:pointer}').
+    Replace('.goto-definition-link{text-decoration:underline;cursor:default;',
+            '.goto-definition-link{text-decoration:underline;cursor:pointer;').
     Replace('.button-link{padding:0;background:transparent;margin:2px;cursor:default;',
             '.button-link{padding:0;background:transparent;margin:2px;cursor:pointer;')
 Update-VSCodeSource $MainCssPath $MainCssText
