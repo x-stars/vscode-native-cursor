@@ -51,6 +51,8 @@ $MainCssText = $MainCssText.Replace('cursor:pointer', 'cursor:default').
             '.xterm.xterm-cursor-pointer{cursor:pointer!important}').
     Replace('.button-link:hover{background:transparent}',
             '.button-link:hover{background:transparent;cursor:pointer}').
+    Replace('.button-link:hover{background:transparent;cursor:default}',
+            '.button-link:hover{background:transparent;cursor:pointer}').
     Replace('.codelens-decoration>a:hover{cursor:default}',
             '.codelens-decoration>a:hover{cursor:pointer}').
     Replace('.goto-definition-link{text-decoration:underline;cursor:default;',
