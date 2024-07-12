@@ -77,14 +77,20 @@ Update-VSCodeSource $MainJsPath $MainJsText
 $ReportCssName = Combine-Path $SandBoxResDir issue issueReporterMain.css
 $ReportCssPath = Combine-Path $VSCodeHome $VSAppResDir $ReportCssName
 # 修改并输出报告问题窗口的 CSS 文件。
-$ReportCssText = [System.IO.File]::ReadAllText($ReportCssPath)
-$ReportCssText = $ReportCssText.Replace('cursor:pointer', 'cursor:default')
-Update-VSCodeSource $ReportCssPath $ReportCssText
+if (Test-Path $ReportCssPath)
+{
+    $ReportCssText = [System.IO.File]::ReadAllText($ReportCssPath)
+    $ReportCssText = $ReportCssText.Replace('cursor:pointer', 'cursor:default')
+    Update-VSCodeSource $ReportCssPath $ReportCssText
+}
 
 # 初始化进程查看窗口的 CSS 文件的路径。
 $ProcessCssName = Combine-Path $SandBoxResDir processExplorer processExplorerMain.css
 $ProcessCssPath = Combine-Path $VSCodeHome $VSAppResDir $ProcessCssName
 # 修改并输出进程查看窗口的 CSS 文件。
-$ProcessCssText = [System.IO.File]::ReadAllText($ProcessCssPath)
-$ProcessCssText = $ProcessCssText.Replace('cursor:pointer', 'cursor:default')
-Update-VSCodeSource $ProcessCssPath $ProcessCssText
+if (Test-Path $ProcessCssPath)
+{
+    $ProcessCssText = [System.IO.File]::ReadAllText($ProcessCssPath)
+    $ProcessCssText = $ProcessCssText.Replace('cursor:pointer', 'cursor:default')
+    Update-VSCodeSource $ProcessCssPath $ProcessCssText
+}
