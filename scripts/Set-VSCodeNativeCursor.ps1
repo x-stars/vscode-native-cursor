@@ -30,12 +30,12 @@ function Update-VSCodeSource([string]$Path, [string]$Content)
 # 初始化 Visual Studio Code 相关路径。
 $CodeBinPath = Split-Path $(Get-Command code).Source -Parent
 $VSCodeHome = $(Get-Item $(Join-Path $CodeBinPath ..)).FullName
-$VSAppResDir = Combine-Path resources app out vs
-$SandBoxResDir = Combine-Path code electron-sandbox
+$VSAppResDirName = Combine-Path * resources app out vs
+$VSAppResDir = $(Get-Item $(Combine-Path $VSCodeHome $VSAppResDirName)).FullName
 
 # 初始化主要工作台的 CSS 文件的路径。
 $MainCssName = Combine-Path workbench workbench.desktop.main.css
-$MainCssPath = Combine-Path $VSCodeHome $VSAppResDir $MainCssName
+$MainCssPath = Combine-Path $VSAppResDir $MainCssName
 # 修改并输出主要工作台的 CSS 文件。
 $MainCssText = [System.IO.File]::ReadAllText($MainCssPath)
 $MainCssText = $MainCssText.Replace('cursor:pointer', 'cursor:default').
@@ -63,7 +63,7 @@ Update-VSCodeSource $MainCssPath $MainCssText
 
 # 初始化主要工作台的 JS 文件的路径。
 $MainJsName = Combine-Path workbench workbench.desktop.main.js
-$MainJsPath = Combine-Path $VSCodeHome $VSAppResDir $MainJsName
+$MainJsPath = Combine-Path $VSAppResDir $MainJsName
 # 修改并输出主要工作台的 JS 文件。
 $MainJsText = [System.IO.File]::ReadAllText($MainJsPath)
 $MainJsText = $MainJsText.
@@ -72,25 +72,3 @@ $MainJsText = $MainJsText.
     Replace(".dirty-diff-glyph {`n`t`t`t`t`tcursor: pointer;",
             ".dirty-diff-glyph {`n`t`t`t`t`tcursor: default;")
 Update-VSCodeSource $MainJsPath $MainJsText
-
-# 初始化报告问题窗口的 CSS 文件的路径。
-$ReportCssName = Combine-Path $SandBoxResDir issue issueReporterMain.css
-$ReportCssPath = Combine-Path $VSCodeHome $VSAppResDir $ReportCssName
-# 修改并输出报告问题窗口的 CSS 文件。
-if (Test-Path $ReportCssPath)
-{
-    $ReportCssText = [System.IO.File]::ReadAllText($ReportCssPath)
-    $ReportCssText = $ReportCssText.Replace('cursor:pointer', 'cursor:default')
-    Update-VSCodeSource $ReportCssPath $ReportCssText
-}
-
-# 初始化进程查看窗口的 CSS 文件的路径。
-$ProcessCssName = Combine-Path $SandBoxResDir processExplorer processExplorerMain.css
-$ProcessCssPath = Combine-Path $VSCodeHome $VSAppResDir $ProcessCssName
-# 修改并输出进程查看窗口的 CSS 文件。
-if (Test-Path $ProcessCssPath)
-{
-    $ProcessCssText = [System.IO.File]::ReadAllText($ProcessCssPath)
-    $ProcessCssText = $ProcessCssText.Replace('cursor:pointer', 'cursor:default')
-    Update-VSCodeSource $ProcessCssPath $ProcessCssText
-}
