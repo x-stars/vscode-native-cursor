@@ -28,7 +28,7 @@ function Update-VSCodeSource([string]$Path, [string]$Content)
 }
 
 # 初始化 Visual Studio Code 相关路径。
-$CodeBinPath = Split-Path $(Get-Command code).Source -Parent
+$CodeBinPath = Split-Path $(Get-Command code.cmd).Source -Parent
 $VSCodeHome = $(Get-Item $(Join-Path $CodeBinPath ..)).FullName
 $VSAppResDirName = Combine-Path * resources app out vs
 $VSAppResDir = $(Get-Item $(Combine-Path $VSCodeHome $VSAppResDirName)).FullName
