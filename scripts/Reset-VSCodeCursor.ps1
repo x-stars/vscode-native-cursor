@@ -27,10 +27,10 @@ function Restore-VSCodeSource([string]$Path)
 }
 
 # 初始化 Visual Studio Code 相关路径。
-$CodeBinPath = Split-Path $(Get-Command code).Source -Parent
+$CodeBinPath = Split-Path $(Get-Command code.cmd).Source -Parent
 $VSCodeHome = $(Get-Item $(Join-Path $CodeBinPath ..)).FullName
-$VSAppResDir = Combine-Path resources app out vs
-$SandBoxResDir = Combine-Path code electron-sandbox
+$VSAppResDirName = Combine-Path * resources app out vs
+$VSAppResDir = $(Get-Item $(Combine-Path $VSCodeHome $VSAppResDirName)).FullName
 
 # 初始化主要工作台的 CSS 文件的路径。
 $MainCssName = Combine-Path workbench workbench.desktop.main.css
@@ -43,15 +43,3 @@ $MainJsName = Combine-Path workbench workbench.desktop.main.js
 $MainJsPath = Combine-Path $VSCodeHome $VSAppResDir $MainJsName
 # 恢复主要工作台的 JS 文件。
 Restore-VSCodeSource $MainJsPath
-
-# 初始化报告问题窗口的 CSS 文件的路径。
-$ReportCssName = Combine-Path $SandBoxResDir issue issueReporterMain.css
-$ReportCssPath = Combine-Path $VSCodeHome $VSAppResDir $ReportCssName
-# 恢复报告问题窗口的 CSS 文件。
-Restore-VSCodeSource $ReportCssPath
-
-# 初始化进程查看窗口的 CSS 文件的路径。
-$ProcessCssName = Combine-Path $SandBoxResDir processExplorer processExplorerMain.css
-$ProcessCssPath = Combine-Path $VSCodeHome $VSAppResDir $ProcessCssName
-# 恢复进程查看窗口的 CSS 文件。
-Restore-VSCodeSource $ProcessCssPath
